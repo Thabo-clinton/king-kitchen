@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Kitchen - Image Placeholders</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #F5F5F5;
+        }
+        h1 {
+            color: #C4622C;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .image-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .image-container {
+            position: relative;
+            padding-bottom: 100%; /* 1:1 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-info {
+            padding: 15px;
+        }
+        .image-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .image-path {
+            color: #666;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        .note {
+            background-color: #8BA88F;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>King Kitchen - Product Image Placeholders</h1>
+    
+    <div class="note">
+        <p><strong>Note:</strong> These are placeholder images for development purposes. In a production environment, you would replace these with actual product photos.</p>
+        <p>To use these images in your website, reference them using the file paths shown below each image.</p>
+    </div>
+    
+    <h2>Hero Carousel Images</h2>
+    <div class="image-grid">
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x400/A9A9A9/FFFFFF?text=Premium+Espresso+Machine" alt="Premium Espresso Machine">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Hero - Espresso Machine</div>
+                <div class="image-path">images/hero-espresso.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x400/A9A9A9/FFFFFF?text=Professional+Mixer" alt="Professional Mixer">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Hero - Professional Mixer</div>
+                <div class="image-path">images/hero-mixer.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x400/A9A9A9/FFFFFF?text=Modern+Air+Fryer" alt="Modern Air Fryer">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Hero - Air Fryer</div>
+                <div class="image-path">images/hero-airfryer.jpg</div>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Product Images</h2>
+    <div class="image-grid">
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/C4622C/FFFFFF?text=Professional+Espresso+Machine" alt="Professional Espresso Machine">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Professional Espresso Machine</div>
+                <div class="image-path">images/espresso-machine-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/8BA88F/FFFFFF?text=Stand+Mixer" alt="Stand Mixer with Attachments">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Stand Mixer with Attachments</div>
+                <div class="image-path">images/stand-mixer-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/C4622C/FFFFFF?text=Digital+Air+Fryer" alt="Digital Air Fryer">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Digital Air Fryer</div>
+                <div class="image-path">images/air-fryer-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/8BA88F/FFFFFF?text=Copper+Cookware+Set" alt="Copper Cookware Set">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Copper Cookware Set</div>
+                <div class="image-path">images/cookware-set-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/C4622C/FFFFFF?text=Smart+Toaster" alt="Smart Toaster">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Smart Toaster</div>
+                <div class="image-path">images/toaster-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/8BA88F/FFFFFF?text=Premium+Chef's+Knife" alt="Premium Chef's Knife">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Premium Chef's Knife</div>
+                <div class="image-path">images/chef-knife-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/C4622C/FFFFFF?text=Electric+Kettle" alt="Electric Kettle">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Electric Kettle</div>
+                <div class="image-path">images/kettle-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/8BA88F/FFFFFF?text=Manual+Espresso+Maker" alt="Manual Espresso Maker">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Manual Espresso Maker</div>
+                <div class="image-path">images/espresso-machine-2.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/C4622C/FFFFFF?text=Food+Processor" alt="Food Processor">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Food Processor</div>
+                <div class="image-path">images/food-processor-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/8BA88F/FFFFFF?text=Cast+Iron+Dutch+Oven" alt="Cast Iron Dutch Oven">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Cast Iron Dutch Oven</div>
+                <div class="image-path">images/dutch-oven-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/C4622C/FFFFFF?text=Hand+Blender+Set" alt="Hand Blender Set">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Hand Blender Set</div>
+                <div class="image-path">images/hand-blender-1.jpg</div>
+            </div>
+        </div>
+        
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://placehold.co/600x600/8BA88F/FFFFFF?text=Toaster+Oven+Air+Fryer" alt="Toaster Oven Air Fryer Combo">
+            </div>
+            <div class="image-info">
+                <div class="image-name">Toaster Oven Air Fryer Combo</div>
+                <div class="image-path">images/toaster-oven-airfryer-1.jpg</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

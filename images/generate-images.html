@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Kitchen - Generate Product Images</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #F5F5F5;
+        }
+        h1 {
+            color: #C4622C;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .controls {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background-color: #8BA88F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #C4622C;
+        }
+        .download-all {
+            background-color: #C4622C;
+        }
+        .canvas-container {
+            display: none;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .image-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .image-container {
+            height: 300px;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-info {
+            padding: 15px;
+        }
+        .image-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .image-path {
+            color: #666;
+            font-size: 14px;
+        }
+        .instructions {
+            background-color: #8BA88F;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>King Kitchen - Generate Product Images</h1>
+    
+    <div class="instructions">
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Click the "Generate Images" button to create placeholder images for all products</li>
+            <li>Click on individual "Download" buttons to save each image</li>
+            <li>Or click "Download All Images" to save all images at once (this may take a moment)</li>
+            <li>Save the images to the 'images' folder in your King Kitchen project</li>
+        </ol>
+    </div>
+    
+    <div class="controls">
+        <button id="generateBtn">Generate Images</button>
+        <button id="downloadAllBtn" class="download-all">Download All Images</button>
+    </div>
+    
+    <div class="canvas-container" id="canvasContainer"></div>
+    
+    <div class="image-grid" id="imageGrid"></div>
+    
+    <script>
+        // Product data
+        const products = [
+            // Hero images
+            {
+                name: "Hero - Espresso Machine",
+                filename: "hero-espresso.jpg",
+                text: "Premium Espresso Machine",
+                bgColor: "#A9A9A9",
+                textColor: "#FFFFFF",
+                width: 1200,
+                height: 600,
+                isHero: true
+            },
+            {
+                name: "Hero - Professional Mixer",
+                filename: "hero-mixer.jpg",
+                text: "Professional Mixer",
+                bgColor: "#A9A9A9",
+                textColor: "#FFFFFF",
+                width: 1200,
+                height: 600,
+                isHero: true
+            },
+            {
+                name: "Hero - Air Fryer",
+                filename: "hero-airfryer.jpg",
+                text: "Modern Air Fryer",
+                bgColor: "#A9A9A9",
+                textColor: "#FFFFFF",
+                width: 1200,
+                height: 600,
+                isHero: true
+            },
+            
+            // Product images
+            {
+                name: "Professional Espresso Machine",
+                filename: "espresso-machine-1.jpg",
+                text: "Professional Espresso Machine",
+                bgColor: "#C4622C",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Stand Mixer with Attachments",
+                filename: "stand-mixer-1.jpg",
+                text: "Stand Mixer",
+                bgColor: "#8BA88F",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Digital Air Fryer",
+                filename: "air-fryer-1.jpg",
+                text: "Digital Air Fryer",
+                bgColor: "#C4622C",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Copper Cookware Set",
+                filename: "cookware-set-1.jpg",
+                text: "Copper Cookware Set",
+                bgColor: "#8BA88F",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Smart Toaster",
+                filename: "toaster-1.jpg",
+                text: "Smart Toaster",
+                bgColor: "#C4622C",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Premium Chef's Knife",
+                filename: "chef-knife-1.jpg",
+                text: "Premium Chef's Knife",
+                bgColor: "#8BA88F",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Electric Kettle",
+                filename: "kettle-1.jpg",
+                text: "Electric Kettle",
+                bgColor: "#C4622C",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Manual Espresso Maker",
+                filename: "espresso-machine-2.jpg",
+                text: "Manual Espresso Maker",
+                bgColor: "#8BA88F",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Food Processor",
+                filename: "food-processor-1.jpg",
+                text: "Food Processor",
+                bgColor: "#C4622C",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Cast Iron Dutch Oven",
+                filename: "dutch-oven-1.jpg",
+                text: "Cast Iron Dutch Oven",
+                bgColor: "#8BA88F",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Hand Blender Set",
+                filename: "hand-blender-1.jpg",
+                text: "Hand Blender Set",
+                bgColor: "#C4622C",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            },
+            {
+                name: "Toaster Oven Air Fryer Combo",
+                filename: "toaster-oven-airfryer-1.jpg",
+                text: "Toaster Oven Air Fryer",
+                bgColor: "#8BA88F",
+                textColor: "#FFFFFF",
+                width: 600,
+                height: 600
+            }
+        ];
+        
+        // DOM elements
+        const generateBtn = document.getElementById('generateBtn');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+        const canvasContainer = document.getElementById('canvasContainer');
+        const imageGrid = document.getElementById('imageGrid');
+        
+        // Generate a placeholder image using canvas
+        function generateImage(product) {
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            canvas.width = product.width;
+            canvas.height = product.height;
+            canvas.id = `canvas-${product.filename.replace('.jpg', '')}`;
+            canvasContainer.appendChild(canvas);
+            
+            // Get context
+            const ctx = canvas.getContext('2d');
+            
+            // Fill background
+            ctx.fillStyle = product.bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add pattern or design elements
+            if (product.isHero) {
+                // For hero images, add a subtle pattern
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+                for (let i = 0; i < 10; i++) {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const size = Math.random() * 100 + 50;
+                    ctx.beginPath();
+                    ctx.arc(x, y, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Add a gradient overlay
+                const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+                gradient.addColorStop(0, 'rgba(0, 0, 0, 0.2)');
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0.6)');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            } else {
+                // For product images, add a subtle gradient
+                const gradient = ctx.createRadialGradient(
+                    canvas.width / 2, canvas.height / 2, 0,
+                    canvas.width / 2, canvas.height / 2, canvas.width / 1.5
+                );
+                gradient.addColorStop(0, 'rgba(255, 255, 255, 0.2)');
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0.2)');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Add a simple icon or shape
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                ctx.beginPath();
+                ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            // Add text
+            ctx.fillStyle = product.textColor;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Set font size based on canvas size
+            const fontSize = product.isHero ? canvas.width / 20 : canvas.width / 15;
+            ctx.font = `bold ${fontSize}px Arial`;
+            
+            // Handle multi-line text
+            const words = product.text.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+            
+            for (let i = 1; i < words.length; i++) {
+                const testLine = currentLine + ' ' + words[i];
+                const metrics = ctx.measureText(testLine);
+                if (metrics.width > canvas.width * 0.8) {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                } else {
+                    currentLine = testLine;
+                }
+            }
+            lines.push(currentLine);
+            
+            // Draw text lines
+            const lineHeight = fontSize * 1.2;
+            const totalHeight = lineHeight * lines.length;
+            let y = (canvas.height - totalHeight) / 2 + lineHeight / 2;
+            
+            lines.forEach(line => {
+                ctx.fillText(line, canvas.width / 2, y);
+                y += lineHeight;
+            });
+            
+            // Add a King Kitchen watermark
+            ctx.font = `${fontSize / 3}px Arial`;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.fillText('King Kitchen', canvas.width / 2, canvas.height - 20);
+            
+            // Convert canvas to image
+            return canvas.toDataURL('image/jpeg', 0.9);
+        }
+        
+        // Create image card for display
+        function createImageCard(product, imageUrl) {
+            const card = document.createElement('div');
+            card.className = 'image-card';
+            
+            card.innerHTML = `
+                <div class="image-container">
+                    <img src="${imageUrl}" alt="${product.name}">
+                </div>
+                <div class="image-info">
+                    <div class="image-name">${product.name}</div>
+                    <div class="image-path">images/${product.filename}</div>
+                    <button class="download-btn" data-filename="${product.filename}">Download</button>
+                </div>
+            `;
+            
+            // Add event listener to download button
+            card.querySelector('.download-btn').addEventListener('click', function() {
+                const filename = this.getAttribute('data-filename');
+                const canvas = document.getElementById(`canvas-${filename.replace('.jpg', '')}`);
+                if (canvas) {
+                    downloadImage(canvas, filename);
+                }
+            });
+            
+            return card;
+        }
+        
+        // Download image from canvas
+        function downloadImage(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg', 0.9);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // Generate all images
+        function generateAllImages() {
+            // Clear previous content
+            canvasContainer.innerHTML = '';
+            imageGrid.innerHTML = '';
+            
+            // Generate images for each product
+            products.forEach(product => {
+                const imageUrl = generateImage(product);
+                const card = createImageCard(product, imageUrl);
+                imageGrid.appendChild(card);
+            });
+        }
+        
+        // Download all images
+        function downloadAllImages() {
+            products.forEach(product => {
+                const canvas = document.getElementById(`canvas-${product.filename.replace('.jpg', '')}`);
+                if (canvas) {
+                    setTimeout(() => {
+                        downloadImage(canvas, product.filename);
+                    }, 300 * products.indexOf(product)); // Stagger downloads to avoid browser issues
+                }
+            });
+        }
+        
+        // Event listeners
+        generateBtn.addEventListener('click', generateAllImages);
+        downloadAllBtn.addEventListener('click', downloadAllImages);
+    </script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="King Kitchen - Premium Kitchen Appliances and Cookware">
+    <title>King Kitchen - Premium Kitchen Appliances</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Overlay for Sidebars -->
+    <div id="overlay"></div>
+    
+    <!-- Side Menu -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <h3>Categories</h3>
+            <button id="closeSideMenu" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="category-list">
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Espresso Machines</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Espresso Machines" data-subcategory="Manual">Manual</a></li>
+                    <li><a href="#" data-category="Espresso Machines" data-subcategory="Automatic">Automatic</a></li>
+                    <li><a href="#" data-category="Espresso Machines" data-subcategory="Semi-Automatic">Semi-Automatic</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Blenders & Mixers</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Blenders & Mixers" data-subcategory="Stand Mixers">Stand Mixers</a></li>
+                    <li><a href="#" data-category="Blenders & Mixers" data-subcategory="Hand Mixers">Hand Mixers</a></li>
+                    <li><a href="#" data-category="Blenders & Mixers" data-subcategory="Blenders">Blenders</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Air Fryers</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Air Fryers" data-subcategory="Basket Air Fryers">Basket Air Fryers</a></li>
+                    <li><a href="#" data-category="Air Fryers" data-subcategory="Toaster Oven Air Fryers">Toaster Oven Air Fryers</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Cookware</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Cookware" data-subcategory="Pots & Pans">Pots & Pans</a></li>
+                    <li><a href="#" data-category="Cookware" data-subcategory="Bakeware">Bakeware</a></li>
+                    <li><a href="#" data-category="Cookware" data-subcategory="Knife Sets">Knife Sets</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Small Appliances</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Small Appliances" data-subcategory="Toasters">Toasters</a></li>
+                    <li><a href="#" data-category="Small Appliances" data-subcategory="Kettles">Kettles</a></li>
+                    <li><a href="#" data-category="Small Appliances" data-subcategory="Coffee Makers">Coffee Makers</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Kitchen Gadgets</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Kitchen Gadgets" data-subcategory="Measuring Tools">Measuring Tools</a></li>
+                    <li><a href="#" data-category="Kitchen Gadgets" data-subcategory="Utensils">Utensils</a></li>
+                    <li><a href="#" data-category="Kitchen Gadgets" data-subcategory="Food Storage">Food Storage</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navigation Bar -->
+        <header class="top-nav">
+            <div class="nav-left">
+                <button id="menuToggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="logo">
+                    <h1>King Kitchen</h1>
+                </a>
+            </div>
+            <div class="nav-center">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search for products...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-icon wishlist-icon" id="wishlistIcon"><i class="far fa-heart"></i><span class="wishlist-count" id="wishlistCount">0</span></a>
+                <a href="#" class="nav-icon cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="carousel" id="heroCarousel">
+                <div class="carousel-slides">
+                    <div class="carousel-slide active">
+                        <img src="images/Keurig K-Express Single Serve K-Cup Pod Coffee….jpeg" alt="Premium Espresso Machine">
+                        <div class="carousel-content">
+                            <h2>Brew Like a Pro with Our Espresso Machines</h2>
+                            <a href="#" class="btn primary-btn shop-now-btn" data-category="Espresso Machines">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/Make holiday baking a breeze with @cuisinart….jpeg" alt="Professional Mixer">
+                        <div class="carousel-content">
+                            <h2>Mix, Blend, Create with Premium Mixers</h2>
+                            <a href="#" class="btn primary-btn shop-now-btn" data-category="Blenders & Mixers">Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/Sleek, modern air fryer for healthier, delicious….jpeg" alt="Modern Air Fryer">
+                        <div class="carousel-content">
+                            <h2>Healthier Cooking with Advanced Air Fryers</h2>
+                            <a href="#" class="btn primary-btn shop-now-btn" data-category="Air Fryers">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-navigation">
+                    <span class="carousel-dot active" data-slide="0"></span>
+                    <span class="carousel-dot" data-slide="1"></span>
+                    <span class="carousel-dot" data-slide="2"></span>
+                </div>
+                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Hot Sales Section -->
+        <section class="product-section hot-sales" id="hotSales">
+            <div class="section-header">
+                <h2>Hot Sales</h2>
+            </div>
+            <div class="product-grid" id="hotSalesGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            <div class="scroll-buttons">
+                <button class="scroll-btn left"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-btn right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Most Sold Section -->
+        <section class="product-section most-sold" id="mostSold">
+            <div class="section-header">
+                <h2>Most Sold</h2>
+            </div>
+            <div class="product-grid" id="mostSoldGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            <div class="scroll-buttons">
+                <button class="scroll-btn left"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-btn right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Filtered Products Section -->
+        <section class="product-section filtered-products" id="filteredProducts" style="display: none;">
+            <div class="section-header">
+                <h2 id="filteredProductsTitle">Filtered Products</h2>
+                <button id="clearFilters" class="btn secondary-btn">Clear Filters</button>
+            </div>
+            <div class="product-grid" id="filteredProductsGrid">
+                <!-- Filtered products will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Discounts Section -->
+        <section class="product-section discounts" id="discounts">
+            <div class="section-header">
+                <h2>Discounts</h2>
+                <div class="filter-options">
+                    <span>Filter by:</span>
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="10">10%</button>
+                    <button class="filter-btn" data-filter="20">20%</button>
+                    <button class="filter-btn" data-filter="30">30%+</button>
+                </div>
+            </div>
+            <div class="product-grid" id="discountsGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+            <div class="scroll-buttons">
+                <button class="scroll-btn left"><i class="fas fa-chevron-left"></i></button>
+                <button class="scroll-btn right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button id="closeCartSidebar" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn primary-btn checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Your Wishlist</h3>
+            <button id="closeWishlistSidebar" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <!-- Wishlist items will be added here dynamically -->
+        </div>
+        <div class="wishlist-footer">
+            <button class="btn primary-btn add-all-to-cart-btn" id="addAllToCart">Add All to Cart</button>
+        </div>
+    </div>
+
+    <!-- Add to Cart Confirmation -->
+    <div class="cart-confirmation" id="cartConfirmation">
+        <div class="confirmation-content">
+            <i class="fas fa-check-circle"></i>
+            <p>Added to Cart!</p>
+            <div class="confirmation-actions">
+                <button id="continueShopping" class="btn secondary-btn">Continue Shopping</button>
+                <button id="viewCart" class="btn primary-btn">View Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>King Kitchen</h3>
+                <p>Premium kitchen appliances for the modern home.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Espresso Machines</a></li>
+                    <li><a href="#">Blenders & Mixers</a></li>
+                    <li><a href="#">Air Fryers</a></li>
+                    <li><a href="#">Cookware</a></li>
+                    <li><a href="#">Small Appliances</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get special offers and new product updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit" class="btn primary-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 King Kitchen. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data_fixed.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
