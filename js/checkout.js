@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupPaymentToggle();
     setupCheckoutForm();
     updateCartCount();
+    initFooterLinks();
 });
 
 // Load and display order summary
@@ -351,3 +352,149 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Initialize footer links
+function initFooterLinks() {
+    // Social media links
+    const socialLinks = document.querySelectorAll('.social-icons a');
+    socialLinks.forEach(link => {
+        if (!link.getAttribute('target')) {
+            link.setAttribute('target', '_blank');
+        }
+        
+        // Set social media URLs
+        const icon = link.querySelector('i');
+        if (icon) {
+            if (icon.classList.contains('fa-facebook-f')) {
+                link.setAttribute('href', 'https://facebook.com');
+            } else if (icon.classList.contains('fa-instagram')) {
+                link.setAttribute('href', 'https://instagram.com');
+            } else if (icon.classList.contains('fa-twitter')) {
+                link.setAttribute('href', 'https://twitter.com');
+            } else if (icon.classList.contains('fa-pinterest-p')) {
+                link.setAttribute('href', 'https://pinterest.com');
+            }
+        }
+    });
+    
+    // Shop category links
+    const shopLinks = document.querySelectorAll('.footer-column:nth-child(2) ul li a');
+    shopLinks.forEach(link => {
+        if (!link.getAttribute('href') || link.getAttribute('href') === '#') {
+            const category = link.textContent.trim();
+            link.setAttribute('href', `./pages/category.html?category=${encodeURIComponent(category)}`);
+        }
+    });
+    
+    // Customer service links
+    const serviceLinks = document.querySelectorAll('.footer-column:nth-child(3) ul li a');
+    serviceLinks.forEach(link => {
+        if (!link.getAttribute('href') || link.getAttribute('href') === '#') {
+            const service = link.textContent.trim().toLowerCase();
+            switch(service) {
+                case 'contact us':
+                    link.setAttribute('href', './pages/contact.html');
+                    break;
+                case 'shipping & returns':
+                    link.setAttribute('href', './pages/shipping.html');
+                    break;
+                case 'faq':
+                    link.setAttribute('href', './pages/faq.html');
+                    break;
+                case 'track order':
+                    link.setAttribute('href', './pages/track-order.html');
+                    break;
+            }
+        }
+    });
+    
+    // Footer bottom links
+    const bottomLinks = document.querySelectorAll('.footer-bottom .footer-links a');
+    bottomLinks.forEach(link => {
+        if (!link.getAttribute('href') || link.getAttribute('href') === '#') {
+            const page = link.textContent.trim().toLowerCase();
+            switch(page) {
+                case 'privacy policy':
+                    link.setAttribute('href', './pages/privacy.html');
+                    break;
+                case 'terms of service':
+                    link.setAttribute('href', './pages/terms.html');
+                    break;
+                case 'accessibility':
+                    link.setAttribute('href', './pages/accessibility.html');
+                    break;
+            }
+        }
+    });
+    
+    // Newsletter form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        // Remove any existing event listeners by cloning and replacing
+        const newForm = newsletterForm.cloneNode(true);
+        newsletterForm.parentNode.replaceChild(newForm, newsletterForm);
+        
+        newForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Newsletter form submitted');
+            const emailInput = this.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value) {
+                showNewsletterConfirmation(emailInput.value);
+                emailInput.value = '';
+            }
+        });
+    }
+}
+
+// Show newsletter subscription confirmation
+function showNewsletterConfirmation(email) {
+    // Create confirmation element
+    const confirmation = document.createElement('div');
+    confirmation.className = 'newsletter-confirmation';
+    confirmation.innerHTML = `
+        <div class="confirmation-content">
+            <i class="fas fa-check-circle"></i>
+            <p>Thank you for subscribing!</p>
+            <p class="email-info">We've sent a confirmation email to <strong>${email}</strong></p>
+        </div>
+    `;
+    
+    // Add styles
+    confirmation.style.position = 'fixed';
+    confirmation.style.top = '50%';
+    confirmation.style.left = '50%';
+    confirmation.style.transform = 'translate(-50%, -50%)';
+    confirmation.style.backgroundColor = 'white';
+    confirmation.style.padding = '30px';
+    confirmation.style.borderRadius = '8px';
+    confirmation.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+    confirmation.style.zIndex = '1000';
+    confirmation.style.textAlign = 'center';
+    
+    // Style the icon
+    const icon = confirmation.querySelector('i');
+    icon.style.color = '#e67e22';
+    icon.style.fontSize = '48px';
+    icon.style.marginBottom = '15px';
+    
+    // Add overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'newsletter-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    overlay.style.zIndex = '999';
+    
+    // Add to document
+    document.body.appendChild(overlay);
+    document.body.appendChild(confirmation);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        document.body.removeChild(overlay);
+        document.body.removeChild(confirmation);
+    }, 3000);
+}
