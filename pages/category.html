@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Category - King Kitchen</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .category-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .category-header h1 {
+            margin-bottom: 10px;
+        }
+        
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-align: center;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .filter-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-options select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sort-options select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        .no-products {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">
+                <a href="../index.html">
+                    <h1>King Kitchen</h1>
+                </a>
+            </div>
+            <div class="search-bar">
+                <form id="searchForm">
+                    <input type="text" placeholder="Search for products..." id="searchInput">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div class="header-actions">
+                <button id="wishlistButton" class="icon-button">
+                    <i class="fas fa-heart"></i>
+                    <span class="count" id="wishlistCount">0</span>
+                </button>
+                <button id="cartButton" class="icon-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="count" id="cartCount">0</span>
+                </button>
+                <button id="menuToggle" class="icon-button menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="category-container">
+            <div class="category-header">
+                <h1 id="categoryTitle">Category Products</h1>
+                <p class="category-description" id="categoryDescription">Browse our selection of premium kitchen appliances designed to elevate your cooking experience.</p>
+            </div>
+            
+            <div class="filter-bar">
+                <div class="filter-options">
+                    <span>Filter:</span>
+                    <select id="priceFilter">
+                        <option value="all">All Prices</option>
+                        <option value="0-100">$0 - $100</option>
+                        <option value="100-300">$100 - $300</option>
+                        <option value="300-500">$300 - $500</option>
+                        <option value="500+">$500+</option>
+                    </select>
+                    <select id="brandFilter">
+                        <option value="all">All Brands</option>
+                        <option value="KitchenElite">KitchenElite</option>
+                        <option value="CuisineMax">CuisineMax</option>
+                        <option value="ChefTech">ChefTech</option>
+                        <option value="GourmetPro">GourmetPro</option>
+                    </select>
+                </div>
+                <div class="sort-options">
+                    <span>Sort by:</span>
+                    <select id="sortOptions">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                        <option value="bestselling">Best Selling</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="product-grid" id="categoryProductsGrid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>King Kitchen</h3>
+                <p>Premium kitchen appliances for the modern home.</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="../pages/category.html?category=Espresso Machines">Espresso Machines</a></li>
+                    <li><a href="../pages/category.html?category=Blenders & Mixers">Blenders & Mixers</a></li>
+                    <li><a href="../pages/category.html?category=Air Fryers">Air Fryers</a></li>
+                    <li><a href="../pages/category.html?category=Cookware">Cookware</a></li>
+                    <li><a href="../pages/category.html?category=Small Appliances">Small Appliances</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="../pages/contact.html">Contact Us</a></li>
+                    <li><a href="../pages/shipping.html">Shipping & Returns</a></li>
+                    <li><a href="../pages/faq.html">FAQ</a></li>
+                    <li><a href="../pages/track-order.html">Track Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get special offers and new product updates.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn primary-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 King Kitchen. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../pages/privacy.html">Privacy Policy</a>
+                <a href="../pages/terms.html">Terms of Service</a>
+                <a href="../pages/accessibility.html">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/data_fixed.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get category from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            
+            // Update page title and description based on category
+            const categoryTitle = document.getElementById('categoryTitle');
+            const categoryDescription = document.getElementById('categoryDescription');
+            
+            if (category) {
+                categoryTitle.textContent = category;
+                document.title = `${category} - King Kitchen`;
+                
+                // Set category-specific descriptions
+                switch(category) {
+                    case 'Espresso Machines':
+                        categoryDescription.textContent = 'Brew cafe-quality espresso at home with our premium espresso machines. From manual to fully automatic, find the perfect machine for your coffee ritual.';
+                        break;
+                    case 'Blenders & Mixers':
+                        categoryDescription.textContent = 'Blend, mix, and puree with precision using our high-performance blenders and mixers. Perfect for smoothies, soups, batters, and more.';
+                        break;
+                    case 'Air Fryers':
+                        categoryDescription.textContent = 'Enjoy crispy, delicious food with less oil using our innovative air fryers. Quick, efficient, and healthier cooking for your everyday meals.';
+                        break;
+                    case 'Cookware':
+                        categoryDescription.textContent = 'Elevate your cooking with our premium cookware collections. From non-stick pans to professional-grade pots, we have everything for your culinary needs.';
+                        break;
+                    case 'Small Appliances':
+                        categoryDescription.textContent = 'Discover our range of small kitchen appliances designed to make food preparation easier and more enjoyable. Save time and enhance your cooking experience.';
+                        break;
+                    default:
+                        categoryDescription.textContent = 'Browse our selection of premium kitchen appliances designed to elevate your cooking experience.';
+                }
+                
+                // Load products for this category
+                loadCategoryProducts(category);
+            } else {
+                // If no category specified, show all products
+                categoryTitle.textContent = 'All Products';
+                loadCategoryProducts('all');
+            }
+            
+            // Filter and sort functionality
+            const priceFilter = document.getElementById('priceFilter');
+            const brandFilter = document.getElementById('brandFilter');
+            const sortOptions = document.getElementById('sortOptions');
+            
+            if (priceFilter && brandFilter && sortOptions) {
+                priceFilter.addEventListener('change', function() {
+                    applyFiltersAndSort();
+                });
+                
+                brandFilter.addEventListener('change', function() {
+                    applyFiltersAndSort();
+                });
+                
+                sortOptions.addEventListener('change', function() {
+                    applyFiltersAndSort();
+                });
+            }
+            
+            // Function to load products for a specific category
+            function loadCategoryProducts(category) {
+                const productGrid = document.getElementById('categoryProductsGrid');
+                if (!productGrid) return;
+                
+                // Clear previous products
+                productGrid.innerHTML = '';
+                
+                // Filter products by category
+                let filteredProducts;
+                if (category === 'all') {
+                    filteredProducts = products;
+                } else {
+                    filteredProducts = products.filter(product => product.category === category);
+                }
+                
+                // If no products found
+                if (filteredProducts.length === 0) {
+                    productGrid.innerHTML = '<div class="no-products">No products found in this category</div>';
+                    return;
+                }
+                
+                // Add products to grid
+                filteredProducts.forEach(product => {
+                    const card = createProductCard(product);
+                    productGrid.appendChild(card);
+                });
+            }
+            
+            // Function to apply filters and sorting
+            function applyFiltersAndSort() {
+                const category = urlParams.get('category') || 'all';
+                const priceRange = priceFilter.value;
+                const brand = brandFilter.value;
+                const sortBy = sortOptions.value;
+                
+                // Filter products
+                let filteredProducts;
+                if (category === 'all') {
+                    filteredProducts = products;
+                } else {
+                    filteredProducts = products.filter(product => product.category === category);
+                }
+                
+                // Apply price filter
+                if (priceRange !== 'all') {
+                    const [min, max] = priceRange.split('-');
+                    if (max) {
+                        filteredProducts = filteredProducts.filter(product => 
+                            product.price >= parseInt(min) && product.price <= parseInt(max)
+                        );
+                    } else {
+                        // For "500+" option
+                        filteredProducts = filteredProducts.filter(product => 
+                            product.price >= parseInt(min.replace('+', ''))
+                        );
+                    }
+                }
+                
+                // Apply brand filter
+                if (brand !== 'all') {
+                    filteredProducts = filteredProducts.filter(product => 
+                        product.brand === brand
+                    );
+                }
+                
+                // Apply sorting
+                switch(sortBy) {
+                    case 'price-low':
+                        filteredProducts.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'price-high':
+                        filteredProducts.sort((a, b) => b.price - a.price);
+                        break;
+                    case 'newest':
+                        // Assuming products have a date field, otherwise this is just a placeholder
+                        filteredProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        break;
+                    case 'bestselling':
+                        // Assuming products have a sales field, otherwise this is just a placeholder
+                        filteredProducts.sort((a, b) => b.sales - a.sales);
+                        break;
+                    // 'featured' is default, no sorting needed
+                }
+                
+                // Update product grid
+                const productGrid = document.getElementById('categoryProductsGrid');
+                productGrid.innerHTML = '';
+                
+                // If no products found after filtering
+                if (filteredProducts.length === 0) {
+                    productGrid.innerHTML = '<div class="no-products">No products match your filters</div>';
+                    return;
+                }
+                
+                // Add filtered products to grid
+                filteredProducts.forEach(product => {
+                    const card = createProductCard(product);
+                    productGrid.appendChild(card);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

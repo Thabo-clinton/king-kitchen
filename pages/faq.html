@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - King Kitchen</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .faq-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            color: #e67e22;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            display: none;
+            padding: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-category {
+            margin-top: 30px;
+        }
+        
+        .faq-category h2 {
+            color: #e67e22;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .contact-cta {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .contact-cta p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">
+                <a href="../index.html">
+                    <h1>King Kitchen</h1>
+                </a>
+            </div>
+            <div class="search-bar">
+                <form id="searchForm">
+                    <input type="text" placeholder="Search for products..." id="searchInput">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div class="header-actions">
+                <button id="wishlistButton" class="icon-button">
+                    <i class="fas fa-heart"></i>
+                    <span class="count" id="wishlistCount">0</span>
+                </button>
+                <button id="cartButton" class="icon-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="count" id="cartCount">0</span>
+                </button>
+                <button id="menuToggle" class="icon-button menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="faq-container">
+            <h1 class="page-title">Frequently Asked Questions</h1>
+            
+            <div class="faq-section">
+                <div class="faq-category">
+                    <h2>Orders & Shipping</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How long will it take to receive my order?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Standard shipping typically takes 5-7 business days. Express shipping is 2-3 business days, and Next Day Delivery will arrive the next business day if ordered before 2 PM EST. Please note that these timeframes begin once your order has been processed, which usually takes 1-2 business days.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you ship internationally?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Currently, we ship to the United States and Canada. We're working on expanding our international shipping options. For specific inquiries about international orders, please contact our customer service team.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How can I track my order?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Once your order has been shipped, you'll receive a confirmation email with a tracking number. You can also track your order by visiting our <a href="track-order.html">Track Order</a> page and entering your order number and email address.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h2>Returns & Refunds</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What is your return policy?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer a 30-day return policy. Items must be returned in their original packaging, unused, and in the same condition that you received them. For complete details, please visit our <a href="shipping.html">Shipping & Returns</a> page.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I initiate a return?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To initiate a return, please contact our customer service team at returns@kingkitchen.com or call us at (555) 123-4567. You'll need to provide your order number and the reason for your return. Our team will provide you with a Return Merchandise Authorization (RMA) number and return instructions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>When will I receive my refund?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Once we receive and inspect your return, we will process your refund within 5-7 business days. The refund will be issued to the original payment method used for the purchase. Depending on your bank or credit card company, it may take an additional 2-10 business days for the refund to appear in your account.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h2>Products & Warranty</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do your products come with a warranty?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all King Kitchen appliances come with a standard 1-year manufacturer's warranty that covers defects in materials and workmanship. Some premium products may have extended warranty options. The warranty information is included with each product and can also be found on the product page.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How do I register my product for warranty?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To register your product for warranty, please visit our warranty registration page and fill out the form with your product information and proof of purchase. This ensures that your warranty is properly documented and makes the claims process smoother if you ever need to use it.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What should I do if my product is defective?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>If you receive a defective product or if your product becomes defective during the warranty period, please contact our customer service team immediately. We'll guide you through the warranty claim process and provide options for repair or replacement.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-category">
+                    <h2>Account & Payment</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What payment methods do you accept?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, and Apple Pay. All payments are processed securely through our encrypted payment system.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is it safe to use my credit card on your website?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, our website uses industry-standard SSL (Secure Socket Layer) encryption to protect your personal and payment information. We do not store your credit card details on our servers. All transactions are processed through secure payment gateways that comply with PCI DSS (Payment Card Industry Data Security Standard).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do I need to create an account to make a purchase?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, you can check out as a guest without creating an account. However, creating an account allows you to track your orders, save your shipping information for future purchases, and manage your wishlist more effectively.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-cta">
+                <p>Can't find the answer you're looking for?</p>
+                <a href="contact.html" class="btn primary-btn">Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>King Kitchen</h3>
+                <p>Premium kitchen appliances for the modern home.</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="../pages/category.html?category=Espresso Machines">Espresso Machines</a></li>
+                    <li><a href="../pages/category.html?category=Blenders & Mixers">Blenders & Mixers</a></li>
+                    <li><a href="../pages/category.html?category=Air Fryers">Air Fryers</a></li>
+                    <li><a href="../pages/category.html?category=Cookware">Cookware</a></li>
+                    <li><a href="../pages/category.html?category=Small Appliances">Small Appliances</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="../pages/contact.html">Contact Us</a></li>
+                    <li><a href="../pages/shipping.html">Shipping & Returns</a></li>
+                    <li><a href="../pages/faq.html">FAQ</a></li>
+                    <li><a href="../pages/track-order.html">Track Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get special offers and new product updates.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn primary-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 King Kitchen. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../pages/privacy.html">Privacy Policy</a>
+                <a href="../pages/terms.html">Terms of Service</a>
+                <a href="../pages/accessibility.html">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/data_fixed.js"></script>
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

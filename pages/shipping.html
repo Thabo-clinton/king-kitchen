@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping & Returns - King Kitchen</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .shipping-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .info-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .info-section h2 {
+            color: #e67e22;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-section h3 {
+            margin: 20px 0 10px;
+            color: #333;
+        }
+        
+        .info-section p, .info-section li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .info-section ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .shipping-table th, .shipping-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .shipping-table th {
+            background-color: #f5f5f5;
+        }
+        
+        .shipping-table tr:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">
+                <a href="../index.html">
+                    <h1>King Kitchen</h1>
+                </a>
+            </div>
+            <div class="search-bar">
+                <form id="searchForm">
+                    <input type="text" placeholder="Search for products..." id="searchInput">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div class="header-actions">
+                <button id="wishlistButton" class="icon-button">
+                    <i class="fas fa-heart"></i>
+                    <span class="count" id="wishlistCount">0</span>
+                </button>
+                <button id="cartButton" class="icon-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="count" id="cartCount">0</span>
+                </button>
+                <button id="menuToggle" class="icon-button menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="shipping-container">
+            <h1 class="page-title">Shipping & Returns</h1>
+            
+            <div class="info-section">
+                <h2>Shipping Information</h2>
+                <p>At King Kitchen, we strive to deliver your premium kitchen appliances as quickly and safely as possible. Please review our shipping policies below:</p>
+                
+                <h3>Shipping Methods & Timeframes</h3>
+                <table class="shipping-table">
+                    <thead>
+                        <tr>
+                            <th>Shipping Method</th>
+                            <th>Estimated Delivery</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Standard Shipping</td>
+                            <td>5-7 Business Days</td>
+                            <td>Free on orders over $50</td>
+                        </tr>
+                        <tr>
+                            <td>Express Shipping</td>
+                            <td>2-3 Business Days</td>
+                            <td>$12.99</td>
+                        </tr>
+                        <tr>
+                            <td>Next Day Delivery</td>
+                            <td>Next Business Day</td>
+                            <td>$24.99</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>International Shipping</h3>
+                <p>We currently ship to the United States and Canada. International shipping rates and delivery times vary by location. Please contact our customer service team for more information about international shipping options.</p>
+                
+                <h3>Order Tracking</h3>
+                <p>Once your order has been shipped, you will receive a confirmation email with a tracking number. You can track your order status by visiting our <a href="track-order.html">Track Order</a> page.</p>
+            </div>
+            
+            <div class="info-section">
+                <h2>Returns & Refunds</h2>
+                <p>We want you to be completely satisfied with your purchase. If for any reason you're not happy with your order, we offer a simple returns process:</p>
+                
+                <h3>Return Policy</h3>
+                <ul>
+                    <li><strong>30-Day Return Window:</strong> You have 30 days from the date of delivery to return your item.</li>
+                    <li><strong>Condition Requirements:</strong> Items must be returned in their original packaging, unused, and in the same condition that you received them.</li>
+                    <li><strong>Return Shipping:</strong> Customers are responsible for return shipping costs unless the item is defective or we made an error.</li>
+                    <li><strong>Refund Processing:</strong> Once we receive and inspect your return, we will process your refund within 5-7 business days.</li>
+                </ul>
+                
+                <h3>How to Initiate a Return</h3>
+                <ol>
+                    <li>Contact our customer service team at returns@kingkitchen.com or call us at (555) 123-4567.</li>
+                    <li>Provide your order number and the reason for your return.</li>
+                    <li>Our team will provide you with a Return Merchandise Authorization (RMA) number and return instructions.</li>
+                    <li>Package your item securely with the RMA number clearly marked on the outside of the package.</li>
+                    <li>Ship your return to the address provided in the return instructions.</li>
+                </ol>
+                
+                <h3>Exchanges</h3>
+                <p>If you'd like to exchange an item for a different size, color, or model, please follow the return process and place a new order for the desired item. This ensures you get your replacement as quickly as possible.</p>
+                
+                <h3>Damaged or Defective Items</h3>
+                <p>If you receive a damaged or defective item, please contact us within 48 hours of delivery. We will arrange for a replacement or refund at no additional cost to you.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>King Kitchen</h3>
+                <p>Premium kitchen appliances for the modern home.</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="../pages/category.html?category=Espresso Machines">Espresso Machines</a></li>
+                    <li><a href="../pages/category.html?category=Blenders & Mixers">Blenders & Mixers</a></li>
+                    <li><a href="../pages/category.html?category=Air Fryers">Air Fryers</a></li>
+                    <li><a href="../pages/category.html?category=Cookware">Cookware</a></li>
+                    <li><a href="../pages/category.html?category=Small Appliances">Small Appliances</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="../pages/contact.html">Contact Us</a></li>
+                    <li><a href="../pages/shipping.html">Shipping & Returns</a></li>
+                    <li><a href="../pages/faq.html">FAQ</a></li>
+                    <li><a href="../pages/track-order.html">Track Order</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get special offers and new product updates.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn primary-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 King Kitchen. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="../pages/privacy.html">Privacy Policy</a>
+                <a href="../pages/terms.html">Terms of Service</a>
+                <a href="../pages/accessibility.html">Accessibility</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/data_fixed.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>
