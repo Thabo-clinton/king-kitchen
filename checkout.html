@@ -7,6 +7,52 @@
     <title>Checkout - King Kitchen</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/checkout.css">
+    <style>
+        /* Footer Product Showcase Styles */
+        .footer-product-showcase {
+            background-color: #f8f8f8;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .showcase-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+        
+        .showcase-images img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .showcase-images img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .showcase-images img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .showcase-images img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -221,6 +267,15 @@
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-product-showcase">
+            <div class="showcase-images">
+                <img src="images/Keurig K-Express Single Serve K-Cup Pod Coffee….jpeg" alt="Coffee Machine">
+                <img src="images/KitchenAidStdMxrMatteBlackSHF16.jpeg" alt="Kitchen Aid Mixer">
+                <img src="images/Sleek, modern air fryer for healthier, delicious….jpeg" alt="Air Fryer">
+                <img src="images/Premium Ceramic Knife Set 5 Pieces Chef….jpeg" alt="Knife Set">
+                <img src="images/Toaster 2 Scheiben Edelstahl Toaster Retro mit 6….jpeg" alt="Toaster">
+            </div>
+        </div>
         <div class="footer-content">
             <div class="footer-column">
                 <h3>King Kitchen</h3>
@@ -246,6 +301,7 @@
                 <h4>Customer Service</h4>
                 <ul>
                     <li><a href="#">Contact Us</a></li>
+                    <li><i class="fas fa-phone"></i> +267 76 413 693</li>
                     <li><a href="#">Shipping & Returns</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Track Order</a></li>
