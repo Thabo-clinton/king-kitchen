@@ -1,0 +1,187 @@
+/* King Kitchen - Responsive & Cross-Browser Compatibility Styles */
+
+/* Print styles */
+@media print {
+    .side-menu, 
+    .cart-sidebar, 
+    .wishlist-sidebar,
+    .top-nav,
+    .footer,
+    .btn {
+        display: none !important;
+    }
+    
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .main-content {
+        margin: 0;
+        padding: 0;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* Screen reader only elements */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 2px;
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .product-card:hover {
+        transform: none;
+    }
+    
+    button, .btn, a {
+        padding: 12px 20px; /* Larger touch targets */
+    }
+    
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+    .btn {
+        border: 1px solid;
+    }
+    
+    .product-card {
+        border: 1px solid;
+    }
+}
+
+/* Orientation changes */
+@media screen and (orientation: portrait) {
+    .product-grid-static {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .carousel {
+        height: 200px;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .product-grid {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Firefox specific fixes */
+@-moz-document url-prefix() {
+    .product-grid {
+        scrollbar-width: thin;
+        scrollbar-color: var(--medium-gray) transparent;
+    }
+}
+
+/* Edge/IE specific fixes */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .product-card {
+        width: calc(33.333% - 20px);
+        margin: 10px;
+    }
+}
+
+/* Fallbacks for older browsers */
+.checkout-grid,
+.form-row,
+.product-grid-static {
+    display: grid;
+}
+
+@supports not (display: grid) {
+    .checkout-grid,
+    .form-row,
+    .product-grid-static {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .checkout-form-container,
+    .order-summary-container {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    @media (min-width: 768px) {
+        .checkout-form-container {
+            width: 60%;
+        }
+        
+        .order-summary-container {
+            width: 35%;
+        }
+    }
+    
+    .form-group {
+        width: 100%;
+    }
+    
+    @media (min-width: 576px) {
+        .form-row .form-group {
+            width: 48%;
+            margin-right: 2%;
+        }
+    }
+    
+    .product-grid-static .product-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    @media (min-width: 576px) {
+        .product-grid-static .product-card {
+            width: 48%;
+            margin-right: 2%;
+        }
+    }
+}
