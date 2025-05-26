@@ -1047,7 +1047,7 @@ button, .btn {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 980px) {
     .carousel {
         height: 400px;
     }
