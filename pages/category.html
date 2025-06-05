@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="King Kitchen - Shop Category">
     <title>Shop Category - King Kitchen</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .category-container {
             max-width: 1200px;
@@ -82,33 +88,105 @@
     </style>
 </head>
 <body>
+    <!-- Overlay for Sidebars -->
+    <div id="overlay"></div>
+    
+    <!-- Side Menu -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <h3>Categories</h3>
+            <button id="closeSideMenu" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="category-list">
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Espresso Machines</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Espresso Machines" data-subcategory="Manual">Manual</a></li>
+                    <li><a href="#" data-category="Espresso Machines" data-subcategory="Automatic">Automatic</a></li>
+                    <li><a href="#" data-category="Espresso Machines" data-subcategory="Semi-Automatic">Semi-Automatic</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Blenders & Mixers</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Blenders & Mixers" data-subcategory="Stand Mixers">Stand Mixers</a></li>
+                    <li><a href="#" data-category="Blenders & Mixers" data-subcategory="Hand Mixers">Hand Mixers</a></li>
+                    <li><a href="#" data-category="Blenders & Mixers" data-subcategory="Blenders">Blenders</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Air Fryers</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Air Fryers" data-subcategory="Basket Air Fryers">Basket Air Fryers</a></li>
+                    <li><a href="#" data-category="Air Fryers" data-subcategory="Toaster Oven Air Fryers">Toaster Oven Air Fryers</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Cookware</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Cookware" data-subcategory="Pots & Pans">Pots & Pans</a></li>
+                    <li><a href="#" data-category="Cookware" data-subcategory="Bakeware">Bakeware</a></li>
+                    <li><a href="#" data-category="Cookware" data-subcategory="Knife Sets">Knife Sets</a></li>
+                </ul>
+            </li>
+            <li class="category-item">
+                <div class="category-header">
+                    <span>Small Appliances</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <ul class="subcategory-list">
+                    <li><a href="#" data-category="Small Appliances" data-subcategory="Toasters">Toasters</a></li>
+                    <li><a href="#" data-category="Small Appliances" data-subcategory="Coffee Makers">Coffee Makers</a></li>
+                    <li><a href="#" data-category="Small Appliances" data-subcategory="Food Processors">Food Processors</a></li>
+                    <li><a href="#" data-category="Small Appliances" data-subcategory="Kettles">Kettles</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
     <!-- Header -->
-    <header class="header">
-        <div class="header-top">
-            <div class="logo">
-                <a href="../index.html">
-                    <h1>King Kitchen</h1>
-                </a>
-            </div>
-            <div class="search-bar">
+    <header class="top-nav">
+        <div class="nav-left">
+            <button id="menuToggle" class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="../index.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+        <div class="nav-center">
+            <a href="../index.html" class="logo">
+                <h1>King Kitchen</h1>
+            </a>
+            <div class="search-container">
                 <form id="searchForm">
                     <input type="text" placeholder="Search for products..." id="searchInput">
-                    <button type="submit"><i class="fas fa-search"></i></button>
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
                 </form>
+                <div class="search-results" id="searchResults"></div>
             </div>
-            <div class="header-actions">
-                <button id="wishlistButton" class="icon-button">
-                    <i class="fas fa-heart"></i>
-                    <span class="count" id="wishlistCount">0</span>
-                </button>
-                <button id="cartButton" class="icon-button">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="count" id="cartCount">0</span>
-                </button>
-                <button id="menuToggle" class="icon-button menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="wishlist-icon" id="wishlistIcon">
+                <i class="far fa-heart"></i>
+                <span class="wishlist-count" id="wishlistCount">0</span>
+            </a>
+            <a href="#" class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
         </div>
     </header>
 
@@ -206,6 +284,50 @@
         </div>
     </footer>
 
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button id="closeCartSidebar" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <a href="../checkout.html" class="btn primary-btn checkout-btn">Checkout</a>
+        </div>
+    </div>
+
+    <!-- Wishlist Sidebar -->
+    <div class="wishlist-sidebar" id="wishlistSidebar">
+        <div class="wishlist-header">
+            <h3>Your Wishlist</h3>
+            <button id="closeWishlistSidebar" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <!-- Wishlist items will be added here dynamically -->
+        </div>
+        <div class="wishlist-footer">
+            <button class="btn primary-btn add-all-to-cart-btn" id="addAllToCart">Add All to Cart</button>
+        </div>
+    </div>
+
+    <!-- Add to Cart Confirmation -->
+    <div class="cart-confirmation" id="cartConfirmation">
+        <div class="confirmation-content">
+            <i class="fas fa-check-circle"></i>
+            <p>Added to Cart!</p>
+            <div class="confirmation-actions">
+                <button id="continueShopping" class="btn secondary-btn">Continue Shopping</button>
+                <button id="viewCart" class="btn primary-btn">View Cart</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../js/data_fixed.js"></script>
     <script src="../js/script.js"></script>
     <script>
@@ -294,7 +416,13 @@
                 
                 // Add products to grid
                 filteredProducts.forEach(product => {
-                    const card = createProductCard(product);
+                    // Create a copy of the product with corrected image path
+                    const productCopy = {...product};
+                    // Fix image path by adding ../ prefix
+                    if (productCopy.image && !productCopy.image.startsWith('../')) {
+                        productCopy.image = '../' + productCopy.image;
+                    }
+                    const card = createProductCard(productCopy);
                     productGrid.appendChild(card);
                 });
             }
@@ -309,9 +437,11 @@
                 // Filter products
                 let filteredProducts;
                 if (category === 'all') {
-                    filteredProducts = products;
+                    filteredProducts = JSON.parse(JSON.stringify(products)); // Deep copy
                 } else {
-                    filteredProducts = products.filter(product => product.category === category);
+                    filteredProducts = JSON.parse(JSON.stringify(
+                        products.filter(product => product.category === category)
+                    )); // Deep copy
                 }
                 
                 // Apply price filter
@@ -367,6 +497,10 @@
                 
                 // Add filtered products to grid
                 filteredProducts.forEach(product => {
+                    // Fix image path by adding ../ prefix
+                    if (product.image && !product.image.startsWith('../')) {
+                        product.image = '../' + product.image;
+                    }
                     const card = createProductCard(product);
                     productGrid.appendChild(card);
                 });
